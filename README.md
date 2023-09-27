@@ -83,8 +83,8 @@ Configure the React application for authentication and API interaction by settin
 -   REACT_APP_RESPONSE_TYPE: Authorization code flow type. Recommended:
 
     -   Default: `code`
--   REACT_APP_API_USER: Endpoint URL for user data fetching.
+-   REACT_APP_API_BASE Endpoint URL for Base data fetching.
 
-    -   Default: `http://localhost:54000/api/user`
+    -   Default: `http://localhost:54000/api/`
 
 To set these, create (or modify) a `.env` file in the root project directory. Add the variables and values, one per line.

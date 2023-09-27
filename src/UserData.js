@@ -2,14 +2,18 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useAuth } from 'oidc-react'
 
-
 /**
  * Fetches user data from the API using the provided token.
  * @param {string} token - The access token to authenticate the request.
  * @returns {Promise} A Promise that resolves with the user data.
  */
 const fetchUserData = async token => {
-  return await axios.get(process.env.REACT_APP_API_USER, {
+  const API_BASE = process.env.REACT_APP_API_BASE
+  const API_USER = process.env.REACT_APP_API_USER
+
+  const API_USER_URL = `${API_BASE}${API_USER}`
+
+  return await axios.get(API_USER_URL, {
     headers: {
       accept: 'application/json',
       Authorization: `Bearer ${token}`
@@ -19,7 +23,6 @@ const fetchUserData = async token => {
 
 // example api use with oidc-react access tokens and axios
 export default function UserData () {
-
   // calling authenicator from oidc-react
   const auth = useAuth()
 
@@ -63,14 +66,14 @@ export default function UserData () {
       {/* fetch from api */}
       <button onClick={handleFetchUserData}>Fetch User Data</button>
 
-       {/* if userData is not null show data and give ability to clear data  */}
+      {/* if userData is not null show data and give ability to clear data  */}
       {userData && (
         <>
           <button onClick={handleHideUserData}>Hide User Data</button>
           <pre>{JSON.stringify(userData, null, 2)}</pre>
         </>
       )}
-     {/* loading between request  */}
+      {/* loading between request  */}
       {loading && <p>Loading...</p>}
     </div>
   )
