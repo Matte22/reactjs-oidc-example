@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 import { useAuth } from 'oidc-react'
+import UserDataTable from './UserDataTable'
 
 /**
  * Fetches user data from the API using the provided token.
@@ -70,7 +71,7 @@ export default function UserData () {
       {userData && (
         <>
           <button onClick={handleHideUserData}>Hide User Data</button>
-          <pre>{JSON.stringify(userData, null, 2)}</pre>
+          <UserDataTable userData={userData} />
         </>
       )}
       {/* loading between request  */}

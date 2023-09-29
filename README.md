@@ -2,6 +2,7 @@ React.js Authentication Example
 ===============================
 
 This repository demonstrates the use of the OIDC-React library for authenticating and interacting with the stigman API.
+This repo also shows basic useage of the React library. 
 
 -   App.js: Contains base oidc code to authenicate with auth provider.
 -   ManageToken.js: Provides insights on interacting with access tokens.
