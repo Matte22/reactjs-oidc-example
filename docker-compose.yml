@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  react-app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: my-react-app:latest
+    ports:
+      - "3000:80"
+    environment:
+      - REACT_APP_AUTH_CONNECT_URL=http://localhost:8080/realms/stigman
+      - REACT_APP_CLIENT_ID=stig-manager
+      - REACT_APP_REDIRECT_URI=http://localhost:3000
+      - REACT_APP_AUTH_SCOPE=openid stig-manager:user:read
+      - REACT_APP_RESPONSE_TYPE=code
+      - REACT_APP_API_BASE=http://localhost:64001/api/
+      - REACT_APP_API_USER=user
